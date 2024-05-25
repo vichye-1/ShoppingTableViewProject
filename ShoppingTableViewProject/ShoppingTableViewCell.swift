@@ -9,5 +9,10 @@ import UIKit
 
 class ShoppingTableViewCell: UITableViewCell {
 
-   
+    
+    @IBOutlet var cellView: UIView!
+    
+    @IBOutlet var checkButton: UIButton!
+    @IBOutlet var wishLabel: UILabel!
+    @IBOutlet var favoriteButton: UIButton!
 }

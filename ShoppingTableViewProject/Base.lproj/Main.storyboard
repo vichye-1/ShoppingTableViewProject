@@ -4,26 +4,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShoppingTableViewProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140" y="4"/>
-        </scene>
         <!--쇼핑-->
         <scene sceneID="9Ih-Ct-c5T">
             <objects>
@@ -78,12 +62,70 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingCell" id="ay9-7c-Xg3" customClass="ShoppingTableViewCell" customModule="ShoppingTableViewProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="161" width="320" height="44.5"/>
+                                <rect key="frame" x="0.0" y="161" width="320" height="46.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ay9-7c-Xg3" id="BcM-hc-igX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfY-o8-HVb">
+                                            <rect key="frame" x="16" y="2" width="288" height="42.5"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heR-hp-Xcf">
+                                            <rect key="frame" x="32" y="8" width="30" height="30.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="3rs-vs-rlx"/>
+                                                <constraint firstAttribute="width" secondItem="heR-hp-Xcf" secondAttribute="height" id="SAL-IA-KFL"/>
+                                                <constraint firstAttribute="width" constant="30" id="pQR-nj-P4f"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="checkmark.square" catalog="system"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxY-Dg-3PO">
+                                            <rect key="frame" x="78" y="5" width="164" height="36.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fai-Pl-HXd">
+                                            <rect key="frame" x="258" y="8.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="GFn-6d-XKd"/>
+                                                <constraint firstAttribute="width" secondItem="fai-Pl-HXd" secondAttribute="height" id="I14-i8-mcc"/>
+                                                <constraint firstAttribute="width" constant="30" id="iuI-CX-2as"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HxY-Dg-3PO" firstAttribute="centerY" secondItem="fai-Pl-HXd" secondAttribute="centerY" id="2Ll-u4-7FO"/>
+                                        <constraint firstAttribute="bottom" secondItem="HxY-Dg-3PO" secondAttribute="bottom" constant="5" id="5tj-HC-yNg"/>
+                                        <constraint firstAttribute="bottom" secondItem="heR-hp-Xcf" secondAttribute="bottom" constant="8" id="FBN-nF-9aq"/>
+                                        <constraint firstItem="fai-Pl-HXd" firstAttribute="leading" secondItem="HxY-Dg-3PO" secondAttribute="trailing" constant="16" id="FK6-be-sMt"/>
+                                        <constraint firstItem="HxY-Dg-3PO" firstAttribute="top" secondItem="BcM-hc-igX" secondAttribute="top" constant="5" id="IhN-xF-kW5"/>
+                                        <constraint firstItem="heR-hp-Xcf" firstAttribute="top" secondItem="BcM-hc-igX" secondAttribute="top" constant="8" id="JId-gr-bvF"/>
+                                        <constraint firstAttribute="trailing" secondItem="BfY-o8-HVb" secondAttribute="trailing" constant="16" id="MIO-JD-3WN"/>
+                                        <constraint firstItem="BfY-o8-HVb" firstAttribute="leading" secondItem="BcM-hc-igX" secondAttribute="leading" constant="16" id="QQz-5g-V9Q"/>
+                                        <constraint firstItem="heR-hp-Xcf" firstAttribute="centerY" secondItem="HxY-Dg-3PO" secondAttribute="centerY" id="QhK-7N-1Di"/>
+                                        <constraint firstAttribute="trailing" secondItem="fai-Pl-HXd" secondAttribute="trailing" constant="32" id="RAe-yx-ENM"/>
+                                        <constraint firstItem="heR-hp-Xcf" firstAttribute="leading" secondItem="BcM-hc-igX" secondAttribute="leading" constant="32" id="Ulc-vK-WOa"/>
+                                        <constraint firstItem="BfY-o8-HVb" firstAttribute="top" secondItem="BcM-hc-igX" secondAttribute="top" constant="2" id="Wr8-RD-DgU"/>
+                                        <constraint firstItem="BfY-o8-HVb" firstAttribute="centerX" secondItem="BcM-hc-igX" secondAttribute="centerX" id="Z89-RO-ANQ"/>
+                                        <constraint firstItem="HxY-Dg-3PO" firstAttribute="leading" secondItem="heR-hp-Xcf" secondAttribute="trailing" constant="16" id="Zcf-EP-DPQ"/>
+                                        <constraint firstItem="fai-Pl-HXd" firstAttribute="centerY" secondItem="BcM-hc-igX" secondAttribute="centerY" id="iFv-3R-1lm"/>
+                                        <constraint firstAttribute="bottom" secondItem="BfY-o8-HVb" secondAttribute="bottom" constant="2" id="qdj-3G-G69"/>
+                                        <constraint firstItem="heR-hp-Xcf" firstAttribute="centerY" secondItem="BcM-hc-igX" secondAttribute="centerY" id="rrt-Hy-Xkl"/>
+                                        <constraint firstItem="BfY-o8-HVb" firstAttribute="centerY" secondItem="BcM-hc-igX" secondAttribute="centerY" id="zgm-Kn-XhQ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellView" destination="BfY-o8-HVb" id="6L4-h1-j68"/>
+                                    <outlet property="checkButton" destination="heR-hp-Xcf" id="oui-Yt-QeJ"/>
+                                    <outlet property="favoriteButton" destination="fai-Pl-HXd" id="qLO-jY-gHj"/>
+                                    <outlet property="wishLabel" destination="HxY-Dg-3PO" id="cBm-d1-JvO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -122,6 +164,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

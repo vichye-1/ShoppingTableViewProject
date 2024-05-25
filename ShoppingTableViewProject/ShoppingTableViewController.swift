@@ -7,16 +7,29 @@
 
 import UIKit
 
-class ShoppingTableViewController: UITableViewController {
+struct Wish {
+    var bought: Bool
+    let wantToBuy: String
+    var favorite: Bool
+}
 
+class ShoppingTableViewController: UITableViewController {
     
     @IBOutlet var backgroundView: UIView!
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var addButton: UIButton!
     
+    var list = [
+        Wish(bought: false, wantToBuy: "애플 키보드", favorite: true),
+        Wish(bought: false, wantToBuy: "아이폰15Pro 1TB", favorite: false),
+        Wish(bought: true, wantToBuy: "트랙패드", favorite: true),
+        Wish(bought: true, wantToBuy: "모니터", favorite: false)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = 60
         
         backgroundViewUI()
         addButtonUI()
@@ -24,14 +37,47 @@ class ShoppingTableViewController: UITableViewController {
 
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return 0
+        
+        return list.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingCell", for: indexPath) as! ShoppingTableViewCell
+        
+        let data = list[indexPath.row]
+        let check = data.bought ? "checkmark.square.fill" : "checkmark.square"
+        let star = data.favorite ? "star.fill" : "star"
+        
+        let checkImage = UIImage(systemName: check)
+        let starImage = UIImage(systemName: star)
+        
+        cell.cellView.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        cell.cellView.layer.cornerRadius = 15
+        
+        cell.wishLabel.text = data.wantToBuy
+        
+        cell.checkButton.tag = indexPath.row
+        cell.checkButton.setImage(checkImage, for: .normal)
+        cell.checkButton.tintColor = .black
+        cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+        
+        cell.favoriteButton.tag = indexPath.row
+        cell.favoriteButton.setImage(starImage, for: .normal)
+        cell.favoriteButton.tintColor = .black
+        cell.favoriteButton.addTarget(self, action: #selector(starButtonClicked), for: .touchUpInside)
+        
+        return cell
+    }
+    
+    @objc func checkButtonClicked(sender: UIButton) {
+        list[sender.tag].bought.toggle()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+    }
+    
+    @objc func starButtonClicked(sender: UIButton) {
+        list[sender.tag].favorite.toggle()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
     }
     
     private func backgroundViewUI() {
@@ -52,4 +98,5 @@ class ShoppingTableViewController: UITableViewController {
         searchTextField.backgroundColor = .clear
         searchTextField.placeholder = "무엇을 구매하실 건가요?"
     }
+    
 }
