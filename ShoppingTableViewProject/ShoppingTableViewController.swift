@@ -71,8 +71,9 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
     
+    // Textfield에 띄어쓰기만 써있을 때 걸러내는 구문
     @objc func addButtonClicked(sender: UIButton) {
-        guard let text = searchTextField.text, text.count > 0 else {
+        guard let text = searchTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty  else {
             return
         }
         list.append(Wish(bought: false, wantToBuy: text, favorite: false))
@@ -109,6 +110,9 @@ class ShoppingTableViewController: UITableViewController {
         searchTextField.placeholder = "무엇을 구매하실 건가요?"
     }
     
+    private func searchWithReturnButton() {
+        searchTextField.addTarget(self, action: #selector(addButtonClicked), for: UIControl.Event.primaryActionTriggered)
+    }
     
     @IBAction func keyBoardDismiss(_ sender: UITextField) {
     }
