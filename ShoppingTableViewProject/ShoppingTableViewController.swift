@@ -34,7 +34,8 @@ class ShoppingTableViewController: UITableViewController {
         backgroundViewUI()
         addButtonUI()
         searchTextfieldUI()
-
+        
+        addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,6 +71,15 @@ class ShoppingTableViewController: UITableViewController {
         return cell
     }
     
+    @objc func addButtonClicked(sender: UIButton) {
+        guard let text = searchTextField.text, text.count > 0 else {
+            return
+        }
+        list.append(Wish(bought: false, wantToBuy: text, favorite: false))
+        searchTextField.text = ""
+        tableView.reloadData()
+    }
+    
     @objc func checkButtonClicked(sender: UIButton) {
         list[sender.tag].bought.toggle()
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
@@ -97,6 +107,10 @@ class ShoppingTableViewController: UITableViewController {
         searchTextField.borderStyle = .none
         searchTextField.backgroundColor = .clear
         searchTextField.placeholder = "무엇을 구매하실 건가요?"
+    }
+    
+    
+    @IBAction func keyBoardDismiss(_ sender: UITextField) {
     }
     
 }

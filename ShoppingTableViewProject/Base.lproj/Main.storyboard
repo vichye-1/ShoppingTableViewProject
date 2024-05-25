@@ -27,6 +27,9 @@
                                             <rect key="frame" x="16" y="10" width="197.5" height="59"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="keyBoardDismiss:" destination="QLR-ZT-8CW" eventType="editingDidEndOnExit" id="Z2U-xE-Bgp"/>
+                                            </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41o-zz-lVq">
                                             <rect key="frame" x="218.5" y="17" width="53.5" height="45"/>
